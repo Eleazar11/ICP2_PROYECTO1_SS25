@@ -1,0 +1,43 @@
+-- 1. Crear base de datos
+CREATE DATABASE IF NOT EXISTS HyruleEventsDB;
+
+-- 2. Crear usuario MySQL para conectarse a la base de datos con la contraseña correcta
+CREATE USER IF NOT EXISTS 'hyrule_user'@'%' IDENTIFIED BY 'Congresos123Cunoc';
+
+-- 3. Dar permisos al usuario sobre la base de datos
+GRANT ALL PRIVILEGES ON HyruleEventsDB.* TO 'hyrule_user'@'%';
+FLUSH PRIVILEGES;
+
+-- 4. Usar la base de datos
+USE HyruleEventsDB;
+
+-- 5. Crear tabla usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+  id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+  nombre_completo VARCHAR(200) NOT NULL,
+  foto_path VARCHAR(300), -- ruta de la foto
+  organizacion VARCHAR(200),
+  correo_electronico VARCHAR(150) NOT NULL UNIQUE,
+  telefono VARCHAR(50),
+  numero_identificacion VARCHAR(50) NOT NULL UNIQUE,
+  contrasena VARCHAR(255) NOT NULL, -- por ahora texto plano
+  rol ENUM('USUARIO','PARTICIPANTE','ADMIN_SISTEMA','ADMIN_CONGRESO','COMITE_CIENTIFICO') NOT NULL DEFAULT 'USUARIO',
+  estado ENUM('ACTIVO','INACTIVO') NOT NULL DEFAULT 'ACTIVO',
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  cartera_saldo DECIMAL(10,2) DEFAULT 0
+);
+
+-- 6. Insertar usuario administrador inicial
+INSERT INTO usuarios (
+    nombre_completo,
+    correo_electronico,
+    numero_identificacion,
+    contrasena,
+    rol
+) VALUES (
+    'Administrador General',
+    'admin@hyruleevents.com',
+    'ADMIN001',
+    'admin123',
+    'ADMIN_SISTEMA'
+);
