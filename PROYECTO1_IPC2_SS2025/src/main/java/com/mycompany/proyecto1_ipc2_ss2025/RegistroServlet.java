@@ -4,7 +4,6 @@
  */
 package com.mycompany.proyecto1_ipc2_ss2025;
 
-
 import com.mycompany.proyecto1_ipc2_ss2025.database.ConexionBaseDeDatos;
 import com.mycompany.proyecto1_ipc2_ss2025.database.InsertarUsuario;
 import jakarta.servlet.ServletException;
@@ -55,9 +54,14 @@ public class RegistroServlet extends HttpServlet {
             String fotoPath = null;
             if (fotoPart != null && fotoPart.getSize() > 0) {
                 String fileName = Path.of(fotoPart.getSubmittedFileName()).getFileName().toString();
-                String uploadPath = getServletContext().getRealPath("") + "uploads/";
+                // Carpeta uploads en la raíz del proyecto
+                String projectPath = System.getProperty("user.dir");
+                String uploadPath = projectPath + File.separator + "uploads" + File.separator;
+                // Crear carpeta si no existe
                 Files.createDirectories(Paths.get(uploadPath));
+                // Guardar archivo
                 fotoPart.write(uploadPath + fileName);
+                // Guardar ruta relativa en la DB
                 fotoPath = "uploads/" + fileName;
             }
 
@@ -90,4 +94,3 @@ public class RegistroServlet extends HttpServlet {
         }
     }
 }
-
