@@ -46,7 +46,7 @@
             <form action="LoginServlet" method="POST">
                 <!-- Username input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="" name="" class="form-control" required>
+                    <input type="text" id="email" name="email" class="form-control" required>
                     <label class="form-label" for="loginUsername">Correo electronico</label>
                 </div>
 
