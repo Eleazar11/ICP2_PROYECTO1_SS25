@@ -30,11 +30,8 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // Conexión a la base de datos
-        Connection connection = ConexionBaseDeDatos.getConnection();
-
-        // Instancia de la clase ConsultarUsuario
-        ConsultarUsuario consultarUsuario = new ConsultarUsuario(connection);
+        // Instancia de la clase ConsultarUsuario (ya usa el Singleton)
+        ConsultarUsuario consultarUsuario = new ConsultarUsuario();
 
         try {
             // Verificar si el usuario es válido

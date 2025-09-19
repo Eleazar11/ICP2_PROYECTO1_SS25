@@ -11,30 +11,35 @@ import java.sql.*;
  * @author eleaz
  */
 public class ConexionBaseDeDatos {
-    private static final String URL_MYSQL = "jdbc:mysql://localhost:3306/HyruleEventsDB"; // Asegurarnos de que el nombre de la base de datos sea correcto
+
+    private static final String IP = "localhost";
+    private static final int PUERTO = 3306;
+    private static final String SCHEMA = "HyruleEventsDB";
     private static final String USER = "hyrule_user";
     private static final String PASSWORD = "Congresos123Cunoc";
-    private static Connection connection = null;
+    private static final String URL = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + SCHEMA + "?useSSL=false&serverTimezone=UTC";
 
-    public static Connection getConnection() {
-        if (connection != null) return connection;
+    private static ConexionBaseDeDatos instance;
+    private Connection connection;
 
+    private ConexionBaseDeDatos() {
         try {
-            // Cargar el driver JDBC
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establecer la conexión
-            connection = DriverManager.getConnection(URL_MYSQL, USER, PASSWORD);
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Conexión exitosa a la base de datos.");
-
-        } catch (ClassNotFoundException e) {
-            System.err.println("Error al cargar el driver JDBC: " + e.getMessage());
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error al conectar con la base de datos: " + e.getMessage());
         }
-
-        return connection;
     }
 
+    public static ConexionBaseDeDatos getInstance() {
+        if (instance == null) {
+            instance = new ConexionBaseDeDatos();
+        }
+        return instance;
+    }
 
+    public Connection getConnection() {
+        return connection;
+    }
 }

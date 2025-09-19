@@ -33,14 +33,7 @@ public class RegistroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Connection connection = ConexionBaseDeDatos.getConnection();
-
         try {
-            if (connection == null) {
-                response.sendRedirect(request.getContextPath() + "/error.jsp");
-                return;
-            }
-
             // Recibir datos del formulario
             String nombreCompleto = request.getParameter("nombreCompleto");
             String organizacion = request.getParameter("organizacion");
@@ -57,15 +50,13 @@ public class RegistroServlet extends HttpServlet {
                 // Carpeta uploads en la raíz del proyecto
                 String projectPath = System.getProperty("user.dir");
                 String uploadPath = projectPath + File.separator + "uploads" + File.separator;
-                // Crear carpeta si no existe
                 Files.createDirectories(Paths.get(uploadPath));
-                // Guardar archivo
                 fotoPart.write(uploadPath + fileName);
-                // Guardar ruta relativa en la DB
                 fotoPath = "uploads/" + fileName;
             }
 
-            InsertarUsuario insertarUsuario = new InsertarUsuario(connection);
+            // Usar DAO con Singleton
+            InsertarUsuario insertarUsuario = new InsertarUsuario();
 
             // Verificar si el correo ya existe
             if (insertarUsuario.correoExiste(correoElectronico)) {
