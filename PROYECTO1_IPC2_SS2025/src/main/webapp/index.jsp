@@ -16,7 +16,7 @@
         <style>
     /* Asegurar que el body tenga altura completa */
     body {
-        background: url('https://64.media.tumblr.com/cca4f06484b447c0687f0325af5b38c9/428a8db1dc8ae92f-87/s1280x1920/7c751558b1d93e15c2d885cff2162ddb95059b8d.gif') no-repeat center center fixed;
+        background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12cbe8a4-f55c-4b40-85bb-d8e1405e7b84/df1wdk7-fa62d5b6-a1b2-4b2b-b407-02e737476148.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8xMmNiZThhNC1mNTVjLTRiNDAtODViYi1kOGUxNDA1ZTdiODQvZGYxd2RrNy1mYTYyZDViNi1hMWIyLTRiMmItYjQwNy0wMmU3Mzc0NzYxNDguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.F-frglSp9cOGvRsq2UlP8J8vSQcB1bGuPNW8-uAZ_vM') no-repeat center center fixed;
         background-size: cover;
     }
 
@@ -30,7 +30,7 @@
     </head>
     <body>
         <div class="container">
-            <h2 class="text-center mt-5">Login COMPUTADORA FELIZ :)</h2>
+            <h2 class="text-center mt-5">Login HYRULE EVENTS</h2>
 
             <%
                 String error = (String) request.getAttribute("error");

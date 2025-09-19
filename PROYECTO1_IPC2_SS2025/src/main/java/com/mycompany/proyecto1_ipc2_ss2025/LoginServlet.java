@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
                         response.sendRedirect("areaUsuario/vistaUsuario.jsp");
                         break;
                     case "ADMIN_SISTEMA":
-                        response.sendRedirect("areaUsuario/vistaUsuario.jsp");
+                        response.sendRedirect("areaAdminSistema/vistaAdminSistema.jsp");
                         break;
                     default:
                         response.sendRedirect("index.jsp"); // En caso de que no haya coincidencia
