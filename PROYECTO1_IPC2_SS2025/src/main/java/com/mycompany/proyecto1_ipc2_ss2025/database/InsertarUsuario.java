@@ -35,15 +35,45 @@ public class InsertarUsuario {
     public void registrarUsuario(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios (nombre_completo, organizacion, correo_electronico, contrasena, telefono, numero_identificacion, foto_path) "
                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, usuario.getNombreCompleto());
-            ps.setString(2, usuario.getOrganizacion());
-            ps.setString(3, usuario.getCorreoElectronico());
-            ps.setString(4, usuario.getContrasena());
-            ps.setString(5, usuario.getTelefono());
-            ps.setString(6, usuario.getNumeroIdentificacion());
-            ps.setString(7, usuario.getFotoPath());
-            ps.executeUpdate();
+
+        try {
+            // Desactivar auto-commit para iniciar la transacción
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, usuario.getNombreCompleto());
+                ps.setString(2, usuario.getOrganizacion());
+                ps.setString(3, usuario.getCorreoElectronico());
+                ps.setString(4, usuario.getContrasena());
+                ps.setString(5, usuario.getTelefono());
+                ps.setString(6, usuario.getNumeroIdentificacion());
+                ps.setString(7, usuario.getFotoPath());
+
+                ps.executeUpdate();
+            }
+
+            // Confirmar la transacción
+            connection.commit();
+
+        } catch (SQLException e) {
+            // En caso de error, deshacer cambios
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackEx) {
+                    rollbackEx.printStackTrace();
+                }
+            }
+            throw e; // Re-lanzar la excepción para que el servlet maneje el error
+        } finally {
+            // Restaurar el auto-commit
+            if (connection != null) {
+                try {
+                    connection.setAutoCommit(true);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
     }
 }
