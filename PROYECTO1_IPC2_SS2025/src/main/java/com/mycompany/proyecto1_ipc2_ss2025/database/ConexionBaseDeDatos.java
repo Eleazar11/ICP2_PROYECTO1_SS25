@@ -17,7 +17,10 @@ public class ConexionBaseDeDatos {
     private static final String SCHEMA = "HyruleEventsDB";
     private static final String USER = "hyrule_user";
     private static final String PASSWORD = "Congresos123Cunoc";
-    private static final String URL = "jdbc:mysql://" + IP + ":" + PUERTO + "/" + SCHEMA + "?useSSL=false&serverTimezone=UTC";
+    private static final String URL =
+    "jdbc:mysql://" + IP + ":" + PUERTO + "/" + SCHEMA +
+    "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
 
     private static ConexionBaseDeDatos instance;
     private Connection connection;

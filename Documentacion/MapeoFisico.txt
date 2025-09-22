@@ -15,19 +15,41 @@ USE HyruleEventsDB;
 CREATE TABLE IF NOT EXISTS usuarios (
   id_usuario INT AUTO_INCREMENT PRIMARY KEY,
   nombre_completo VARCHAR(200) NOT NULL,
-  foto_path VARCHAR(300), -- ruta de la foto
+  foto_path VARCHAR(300),
   organizacion VARCHAR(200),
   correo_electronico VARCHAR(150) NOT NULL UNIQUE,
   telefono VARCHAR(50),
   numero_identificacion VARCHAR(50) NOT NULL UNIQUE,
-  contrasena VARCHAR(255) NOT NULL, -- por ahora texto plano
-  rol ENUM('USUARIO','PARTICIPANTE','ADMIN_SISTEMA','ADMIN_CONGRESO','COMITE_CIENTIFICO') NOT NULL DEFAULT 'USUARIO',
+  contrasena VARCHAR(255) NOT NULL,
+  rol ENUM('USUARIO','PARTICIPANTE','ADMIN_SISTEMA','ADMIN_CONGRESO') NOT NULL DEFAULT 'USUARIO',
   estado ENUM('ACTIVO','INACTIVO') NOT NULL DEFAULT 'ACTIVO',
   fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   cartera_saldo DECIMAL(10,2) DEFAULT 0
 );
 
--- 6. Insertar usuario administrador inicial
+-- 6. Tabla de roles adicionales (ponente, tallerista, asistente, comité científico, etc.)
+CREATE TABLE IF NOT EXISTS roles_extra (
+  id_rol_extra INT AUTO_INCREMENT PRIMARY KEY,
+  nombre_rol VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Insertar roles extra posibles
+INSERT IGNORE INTO roles_extra (nombre_rol) VALUES
+('ASISTENTE'),
+('PONENTE'),
+('TALLERISTA'),
+('COMITE_CIENTIFICO');
+
+-- 7. Relación N:M entre usuarios y roles extra
+CREATE TABLE IF NOT EXISTS usuario_roles_extra (
+  id_usuario INT,
+  id_rol_extra INT,
+  PRIMARY KEY (id_usuario, id_rol_extra),
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_rol_extra) REFERENCES roles_extra(id_rol_extra) ON DELETE CASCADE
+);
+
+-- 8. Insertar usuario administrador inicial
 INSERT INTO usuarios (
     nombre_completo,
     correo_electronico,
@@ -40,4 +62,38 @@ INSERT INTO usuarios (
     'ADMIN001',
     'admin123',
     'ADMIN_SISTEMA'
+);
+
+-- Tabla de instituciones
+CREATE TABLE IF NOT EXISTS instituciones (
+  id_institucion INT AUTO_INCREMENT PRIMARY KEY,
+  nombre_institucion VARCHAR(200) NOT NULL UNIQUE,
+  descripcion TEXT,
+  direccion VARCHAR(300),
+  telefono VARCHAR(50),
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Relación entre instituciones y administradores de congresos
+-- Solo los usuarios con rol = 'ADMIN_CONGRESO' pueden estar aquí
+CREATE TABLE IF NOT EXISTS administradores_institucion (
+  id_institucion INT NOT NULL,
+  id_usuario INT NOT NULL,
+  PRIMARY KEY (id_institucion, id_usuario),
+  FOREIGN KEY (id_institucion) REFERENCES instituciones(id_institucion) ON DELETE CASCADE,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+
+-- Tabla de congresos
+CREATE TABLE IF NOT EXISTS congresos (
+  id_congreso INT AUTO_INCREMENT PRIMARY KEY,
+  id_institucion INT NOT NULL,
+  nombre_congreso VARCHAR(200) NOT NULL,
+  descripcion TEXT,
+  fecha_inicio DATE NOT NULL,
+  fecha_fin DATE NOT NULL,
+  precio DECIMAL(10,2) NOT NULL CHECK (precio >= 35.00),
+  ubicacion VARCHAR(200) NOT NULL,
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_institucion) REFERENCES instituciones(id_institucion) ON DELETE CASCADE
 );
