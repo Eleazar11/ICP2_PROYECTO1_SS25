@@ -31,7 +31,7 @@ public class RegistroUsuarioFormServletAdmin extends HttpServlet {
             request.setAttribute("instituciones", instituciones);
 
             // Redirigir al JSP del formulario
-            request.getRequestDispatcher("registroUsuarios.jsp").forward(request, response);
+            request.getRequestDispatcher("/areaAdminSistema/registroUsuarios.jsp").forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();

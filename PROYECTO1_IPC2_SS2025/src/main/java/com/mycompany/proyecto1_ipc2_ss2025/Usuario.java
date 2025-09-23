@@ -18,6 +18,8 @@ public class Usuario {
     private String numeroIdentificacion;
     private String fotoPath;
     private TipoUsuario tipoUsuario;
+    private TipoEstadoUsuario estado;
+    private int id_usuario;
 
     public Usuario(String nombreCompleto, String organizacion, String correoElectronico,
             String contrasena, String telefono, String numeroIdentificacion, String fotoPath) {
@@ -30,6 +32,24 @@ public class Usuario {
         this.fotoPath = fotoPath;
     }
 
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    
+    public TipoEstadoUsuario getEstado() {
+        return estado;
+    }
+
+    public void setEstado(TipoEstadoUsuario estado) {
+        this.estado = estado;
+    }
+
+    
     public String getNombreCompleto() {
         return nombreCompleto;
     }

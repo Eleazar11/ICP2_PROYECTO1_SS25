@@ -40,7 +40,9 @@ public class InsertarUsuario {
     }
 
     public void registrarUsuario(Usuario usuario, TipoUsuario tipoUsuario) throws SQLException {
-        String sql = "INSERT INTO usuarios (nombre_completo, foto_path, organizacion, correo_electronico, telefono, numero_identificacion, contrasena, rol, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'ACTIVO')";
+        String sql = "INSERT INTO usuarios " +
+                     "(nombre_completo, foto_path, organizacion, correo_electronico, telefono, numero_identificacion, contrasena, rol, estado) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'ACTIVO')";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             connection.setAutoCommit(false); // inicio de transacción

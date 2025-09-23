@@ -71,9 +71,9 @@
                                 <li>
                                     <a class="dropdown-item" href="${pageContext.servletContext.contextPath}/registroUsuarioAdmin">Registrar</a>
                                 </li>
-                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/servlets/administracion/ObtenerModelosComputadoraServlet">Ver Lista</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/servlets/administracion/ObtenerModelosComputadoraModificarServlet">Modificar</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/servlets/administracion/ObtenerModelosComputadoraEliminarServlet">Eliminar</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ListarUsuariosServlet">Ver Lista</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerUsuariosModificarServlet">Modificar</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerUsuariosEliminarServlet">Eliminar</a></li>
                             </ul>
                         </li>
 
