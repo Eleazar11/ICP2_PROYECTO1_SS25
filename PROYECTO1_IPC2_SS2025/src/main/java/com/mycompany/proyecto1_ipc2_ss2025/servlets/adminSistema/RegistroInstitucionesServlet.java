@@ -37,7 +37,7 @@ public class RegistroInstitucionesServlet extends HttpServlet {
 
             // Verificar si ya existe
             if (insertarInstitucion.institucionExiste(nombreInstitucion)) {
-                response.sendRedirect(request.getContextPath() + "/institucionRepetida.jsp");
+                response.sendRedirect(request.getContextPath() + "/areaAdminSistema/institucionRepetida.jsp");
                 return;
             }
 
@@ -45,10 +45,10 @@ public class RegistroInstitucionesServlet extends HttpServlet {
             ModeloInstitucion institucion = new ModeloInstitucion(nombreInstitucion, descripcion, direccion, telefono);
             insertarInstitucion.registrarInstitucion(institucion);
 
-            response.sendRedirect(request.getContextPath() + "/confirmacion.jsp");
+            response.sendRedirect(request.getContextPath() + "/areaAdminSistema/confirmacion.jsp");
 
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/error.jsp");
+            response.sendRedirect(request.getContextPath() + "/areaAdminSistema/error.jsp");
         }
     }}
