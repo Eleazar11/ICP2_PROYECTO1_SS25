@@ -25,6 +25,11 @@
 
                 color: white; /* Texto en blanco */
             }
+            label {
+                color: white;
+                text-shadow: 1px 1px 3px black;
+            }
+
         </style>
 
     </head>
