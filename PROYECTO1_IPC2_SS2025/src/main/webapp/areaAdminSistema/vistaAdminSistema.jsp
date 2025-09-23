@@ -59,7 +59,7 @@
                                 <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerInstitucionesModificarServlet">Modificar Institución</a>
                                 </li>
 
-                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/servlets/administracion/ObtenerUsuariosEliminarServlet">Eliminar Institucion</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerInstitucionesEliminarServlet">Eliminar Institucion</a></li>
                             </ul>
                         </li>
 
