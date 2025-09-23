@@ -14,17 +14,17 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <style>
-    /* Asegurar que el body tenga altura completa */
-    body {
-        background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12cbe8a4-f55c-4b40-85bb-d8e1405e7b84/df1wdk7-fa62d5b6-a1b2-4b2b-b407-02e737476148.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8xMmNiZThhNC1mNTVjLTRiNDAtODViYi1kOGUxNDA1ZTdiODQvZGYxd2RrNy1mYTYyZDViNi1hMWIyLTRiMmItYjQwNy0wMmU3Mzc0NzYxNDguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.F-frglSp9cOGvRsq2UlP8J8vSQcB1bGuPNW8-uAZ_vM') no-repeat center center fixed;
-        background-size: cover;
-    }
+            /* Asegurar que el body tenga altura completa */
+            body {
+                background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12cbe8a4-f55c-4b40-85bb-d8e1405e7b84/df1wdk7-fa62d5b6-a1b2-4b2b-b407-02e737476148.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8xMmNiZThhNC1mNTVjLTRiNDAtODViYi1kOGUxNDA1ZTdiODQvZGYxd2RrNy1mYTYyZDViNi1hMWIyLTRiMmItYjQwNy0wMmU3Mzc0NzYxNDguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.F-frglSp9cOGvRsq2UlP8J8vSQcB1bGuPNW8-uAZ_vM') no-repeat center center fixed;
+                background-size: cover;
+            }
 
-    /* Estilo para el texto */
-    body, p, h1, h2, h3, h4, h5, h6, span {
-        
-        color: white; /* Texto en blanco */
-    }
+            /* Estilo para el texto */
+            body, p, h1, h2, h3, h4, h5, h6, span {
+
+                color: white; /* Texto en blanco */
+            }
         </style>
 
     </head>
@@ -61,7 +61,10 @@
 
                 <!-- Register link -->
                 <div class="text-center">
-                    <p>No eres un usuario? <a href="registroUsuario.jsp">Click para registrarte</a></p>
+                    <p>No eres un usuario? 
+                        <a href="${pageContext.servletContext.contextPath}/registroUsuario">Click para registrarte</a>
+                    </p>
+
                 </div>
             </form>
         </div>
