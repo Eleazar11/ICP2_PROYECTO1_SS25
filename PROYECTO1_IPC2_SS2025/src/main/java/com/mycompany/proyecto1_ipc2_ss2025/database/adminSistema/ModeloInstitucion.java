@@ -9,6 +9,7 @@ package com.mycompany.proyecto1_ipc2_ss2025.database.adminSistema;
  * @author eleaz
  */
 public class ModeloInstitucion {
+    private int idInstitucion; 
     private String nombreInstitucion;
     private String desccripcion;
     private String direccion;
@@ -21,6 +22,24 @@ public class ModeloInstitucion {
         this.telefono = telefono;
     }
 
+    public ModeloInstitucion(int idInstitucion, String nombreInstitucion, String desccripcion, String direccion, String telefono) {
+        this.idInstitucion = idInstitucion;
+        this.nombreInstitucion = nombreInstitucion;
+        this.desccripcion = desccripcion;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    
+    public int getIdInstitucion() {
+        return idInstitucion;
+    }
+
+    public void setIdInstitucion(int idInstitucion) {
+        this.idInstitucion = idInstitucion;
+    }
+
+    
     public String getNombreInstitucion() {
         return nombreInstitucion;
     }
