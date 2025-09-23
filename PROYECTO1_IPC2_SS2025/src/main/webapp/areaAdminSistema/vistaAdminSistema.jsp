@@ -55,10 +55,8 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="usuariosDropdown">
                                 <li><a class="dropdown-item" href="#" onclick="loadPage('crearInstitucion')">Registrar nueva institución</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/servlets/administracion/ObtenerUsuariosServlet">Ver Lista de Instituciones</a></li>
-                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerInstitucionesModificarServlet">Modificar Institución</a>
-                                </li>
-
+                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ListarInstitucionesServlet">Ver Lista de Instituciones</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerInstitucionesModificarServlet">Modificar Institución</a></li>
                                 <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/ObtenerInstitucionesEliminarServlet">Eliminar Institucion</a></li>
                             </ul>
                         </li>
